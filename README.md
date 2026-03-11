@@ -1,79 +1,133 @@
-![Logo](https://storage.googleapis.com/tf_model_garden/tf_model_garden_logo.png)
+# Object Detection API with TensorFlow 2 (for lemonlight)
 
-# TensorFlow Research Models
+## Requirements
 
-This directory contains code implementations and pre-trained models of published research papers.
+[![Python 3.6](https://img.shields.io/badge/Python-3.6-3776AB)](https://www.python.org/downloads/release/python-360/)
+[![TensorFlow 2.2](https://img.shields.io/badge/TensorFlow-2.2-FF6F00?logo=tensorflow)](https://github.com/tensorflow/tensorflow/releases/tag/v2.2.0)
+[![Protobuf Compiler >= 3.0](https://img.shields.io/badge/ProtoBuf%20Compiler-%3E3.0-brightgreen)](https://grpc.io/docs/protoc-installation/#install-using-a-package-manager)
 
-The research models are maintained by their respective authors.
+## Installation
 
-## Table of Contents
-- [TensorFlow Research Models](#tensorflow-research-models)
-  - [Table of Contents](#table-of-contents)
-  - [Modeling Libraries and Models](#modeling-libraries-and-models)
-  - [Models and Implementations](#models-and-implementations)
-    - [Computer Vision](#computer-vision)
-    - [Natural Language Processing](#natural-language-processing)
-    - [Audio and Speech](#audio-and-speech)
-    - [Reinforcement Learning](#reinforcement-learning)
-    - [Others](#others)
-    - [Old Models and Implementations in TensorFlow 1](#old-models-and-implementations-in-tensorflow-1)
-  - [Contributions](#contributions)
+You can install the TensorFlow Object Detection API with Python Package
+Installer (pip) as well as protobuf
 
-## Modeling Libraries and Models
+Clone the TensorFlow Models repository and proceed to one of the installation
+options.
 
-| Directory | Name | Description | Maintainer(s) |
-|-----------|------|-------------|---------------|
-| [object_detection](object_detection) | TensorFlow Object Detection API | A framework that makes it easy to construct, train and deploy object detection models<br /><br />A collection of object detection models pre-trained on the COCO dataset, the Kitti dataset, the Open Images dataset, the AVA v2.1 dataset, and the iNaturalist Species Detection Dataset| jch1, tombstone, pkulzc |
-| [slim](slim) | TensorFlow-Slim Image Classification Model Library | A lightweight high-level API of TensorFlow for defining, training and evaluating image classification models <br />• Inception V1/V2/V3/V4<br />• Inception-ResNet-v2<br />• ResNet V1/V2<br />• VGG 16/19<br />• MobileNet V1/V2/V3<br />• NASNet-A_Mobile/Large<br />• PNASNet-5_Large/Mobile | sguada, marksandler2 |
+Alternatively, you can install the zip of the repo and unzip it to use as the main project directory.
 
-## Models and Implementations
+```bash
+#change this to working repo
+git clone https://github.com/tensorflow/models.git
+```
 
-### Computer Vision
+### Python Package Installation
 
-| Directory | Paper(s) | Conference | Maintainer(s) |
-|-----------|----------|------------|---------------|
-| [attention_ocr](attention_ocr) | [Attention-based Extraction of Structured Information from Street View Imagery](https://arxiv.org/abs/1704.03549) | ICDAR 2017 | xavigibert |
-| [autoaugment](autoaugment) | [1] [AutoAugment](https://arxiv.org/abs/1805.09501)<br />[2] [Wide Residual Networks](https://arxiv.org/abs/1605.07146)<br />[3] [Shake-Shake regularization](https://arxiv.org/abs/1705.07485)<br />[4] [ShakeDrop Regularization for Deep Residual Learning](https://arxiv.org/abs/1802.02375) | [1] CVPR 2019<br />[2] BMVC 2016<br /> [3] ICLR 2017<br /> [4] ICLR 2018 | barretzoph |
-| [deeplab](deeplab) | [1] [DeepLabv1: Semantic Image Segmentation with Deep Convolutional Nets and Fully Connected CRFs](https://arxiv.org/abs/1412.7062)<br />[2] [DeepLabv2: Semantic Image Segmentation with Deep Convolutional Nets, Atrous Convolution, and Fully Connected CRFs](https://arxiv.org/abs/1606.00915)<br />[3] [DeepLabv3: Rethinking Atrous Convolution for Semantic Image Segmentation](https://arxiv.org/abs/1706.05587)<br />[4] [DeepLabv3+: Encoder-Decoder with Atrous Separable Convolution for Semantic Image Segmentation](https://arxiv.org/abs/1802.02611)<br />| [1] ICLR 2015 <br />[2] TPAMI 2017 <br />[4] ECCV 2018 | aquariusjay, yknzhu |
-| [delf](delf)  | [1] DELF (DEep Local Features): [Large-Scale Image Retrieval with Attentive Deep Local Features](https://arxiv.org/abs/1612.06321)<br />[2] [Detect-to-Retrieve: Efficient Regional Aggregation for Image Search](https://arxiv.org/abs/1812.01584)<br />[3] DELG (DEep Local and Global features): [Unifying Deep Local and Global Features for Image Search](https://arxiv.org/abs/2001.05027)<br />[4] GLDv2: [Google Landmarks Dataset v2 -- A Large-Scale Benchmark for Instance-Level Recognition and Retrieval](https://arxiv.org/abs/2004.01804) | [1] ICCV 2017<br />[2] CVPR 2019<br />[4] CVPR 2020 | andrefaraujo |
-| [lstm_object_detection](lstm_object_detection) | [Mobile Video Object Detection with Temporally-Aware Feature Maps](https://arxiv.org/abs/1711.06368) | CVPR 2018 | yinxiaoli, yongzhe2160, lzyuan |
-| [marco](marco) | MARCO: [Classification of crystallization outcomes using deep convolutional neural networks](https://arxiv.org/abs/1803.10342) | | vincentvanhoucke |
-| [vid2depth](vid2depth) | [Unsupervised Learning of Depth and Ego-Motion from Monocular Video Using 3D Geometric Constraints](https://arxiv.org/abs/1802.05522) | CVPR 2018 | rezama |
+#### Create Conda Environment
 
-### Natural Language Processing
+You may have to change the directories to where you have the github repo installed if it is not in a standard location or if you installed it through the zip file.
 
-| Directory | Paper(s) | Conference | Maintainer(s) |
-|-----------|----------|------------|---------------|
-| [adversarial_text](adversarial_text) | [1] [Adversarial Training Methods for Semi-Supervised Text](https://arxiv.org/abs/1605.07725) Classification<br />[2] [Semi-supervised Sequence Learning](https://arxiv.org/abs/1511.01432) | [1] ICLR 2017<br />[2] NIPS 2015 | rsepassi, a-dai |
-| [cvt_text](cvt_text) | [Semi-Supervised Sequence Modeling with Cross-View Training](https://arxiv.org/abs/1809.08370) | EMNLP 2018 | clarkkev, lmthang |
+```bash
+#create environment
+conda create -n tf2 python=3.9
+#enter environment
+conda activate tf2
+#enter the installed github repo's folder (you may have to change)
+cd models/research
+```
 
-### Audio and Speech
+#### Protobuf usage
 
-| Directory | Paper(s) | Conference | Maintainer(s) |
-|-----------|----------|------------|---------------|
-| [audioset](audioset) | [1] [Audio Set: An ontology and human-labeled dataset for audio events](https://research.google/pubs/pub45857/)<br />[2] [CNN Architectures for Large-Scale Audio Classification](https://research.google/pubs/pub45611/) | ICASSP 2017 | plakal, dpwe |
-| [deep_speech](deep_speech) | [Deep Speech 2](https://arxiv.org/abs/1512.02595) | ICLR 2016 | yhliang2018 |
+Before you start using protobuf, you must check the version you have installed both in pip and in your conda environment. 
 
-### Reinforcement Learning
+```bash
+#check installed version on conda env (if this outputs a version other than 3.20.3, you must manually change the protoc version that anaconda uses)
+protoc --version
+#check installed version through pip (don't worry if this shows blank)
+pip show protobuf
+```
 
-| Directory | Paper(s) | Conference | Maintainer(s) |
-|-----------|----------|------------|---------------|
-| [efficient-hrl](efficient-hrl) | [1] [Data-Efficient Hierarchical Reinforcement Learning](https://arxiv.org/abs/1805.08296)<br />[2] [Near-Optimal Representation Learning for Hierarchical Reinforcement Learning](https://arxiv.org/abs/1810.01257) | [1] NIPS 2018<br /> [2] ICLR 2019 | ofirnachum |
-| [pcl_rl](pcl_rl) | [1] [Improving Policy Gradient by Exploring Under-appreciated Rewards](https://arxiv.org/abs/1611.09321)<br />[2] [Bridging the Gap Between Value and Policy Based Reinforcement Learning](https://arxiv.org/abs/1702.08892)<br />[3] [Trust-PCL: An Off-Policy Trust Region Method for Continuous Control](https://arxiv.org/abs/1707.01891) | [1] ICLR 2017<br />[2] NIPS 2017<br />[3] ICLR 2018 | ofirnachum |
+#### Changing Protobuf Version In Conda
 
-### Others
+install the correct version of protoc for conda from https://github.com/protocolbuffers/protobuf/releases/v3.20.3
 
-| Directory | Paper(s) | Conference | Maintainer(s) |
-|-----------|----------|------------|---------------|
-| [lfads](lfads) | [LFADS - Latent Factor Analysis via Dynamical Systems](https://arxiv.org/abs/1608.06315) | | jazcollins, sussillo |
-| [rebar](rebar) | [REBAR: Low-variance, unbiased gradient estimates for discrete latent variable models](https://arxiv.org/abs/1703.07370) | NIPS 2017 | gjtucker |
+use the command ```where protoc``` to see where the protoc installation is used and replace it with the manually installed version of 3.20.3 (in the zip) from the bin folder to wherever ```where protoc``` is telling you its installed and overwrite the current installed exe.
 
-### Old Models and Implementations in TensorFlow 1
+Double check versions are correct
 
-:warning: If you are looking for old models, please visit the [Archive branch](https://github.com/tensorflow/models/tree/archive/research).
+```bash
+#check installed version on conda env (if this outputs a version other than 3.20.3, you did something wrong and must redo the previous step or find further help)
+protoc --version
+#check installed version through pip (still, don't worry if this shows blank)
+pip show protobuf
+```
 
----
+#### Compile Protos and Install Tensorflow Library
+```bash
+#compile protos
+protoc object_detection/protos*.proto --python_out=.
 
-## Contributions
+#install the actual tensorflow library
+python -m pip install .
+```
 
-If you want to contribute, please review the [contribution guidelines](https://github.com/tensorflow/models/wiki/How-to-contribute).
+### Test the installation
+
+```bash
+python object_detection/builders/model_builder_tf2_test.py
+```
+
+If the test fails with an error like ```cannot import name 'builder' from 'google.protobuf.internal'``` despite having the correct version of protoc/protobuf, you have to change the internal version (the pip installed version) to ```3.20.3``` from ```3.19.6``` by running these commands otherwise, leave the internal version on ```3.19.6```
+
+```bash
+pip uninstall protobuf
+pip install protobuf==3.20.3
+#check versions (both should say 3.20.3)
+protoc --version
+pip show protobuf
+#run the installation test again
+python object_detection/builders/model_builder_tf2_test.py
+```
+
+## Quick Start (Legacy)
+
+### Colabs
+
+<!-- mdlint off(URL_BAD_G3DOC_PATH) -->
+
+*   Training -
+    [Fine-tune a pre-trained detector in eager mode on custom data](../colab_tutorials/eager_few_shot_od_training_tf2_colab.ipynb)
+
+*   Inference -
+    [Run inference with models from the zoo](../colab_tutorials/inference_tf2_colab.ipynb)
+
+*   Few Shot Learning for Mobile Inference -
+    [Fine-tune a pre-trained detector for use with TensorFlow Lite](../colab_tutorials/eager_few_shot_od_training_tflite.ipynb)
+
+<!-- mdlint on -->
+
+## Training and Evaluation
+
+To train and evaluate your models either locally or on Google Cloud see
+[instructions](tf2_training_and_evaluation.md).
+
+## Model Zoo
+
+We provide a large collection of models that are trained on COCO 2017 in the
+[Model Zoo](tf2_detection_zoo.md).
+
+## Guides
+
+*   <a href='configuring_jobs.md'>
+      Configuring an object detection pipeline</a><br>
+*   <a href='preparing_inputs.md'>Preparing inputs</a><br>
+*   <a href='defining_your_own_model.md'>
+      Defining your own model architecture</a><br>
+*   <a href='using_your_own_dataset.md'>
+      Bringing in your own dataset</a><br>
+*   <a href='evaluation_protocols.md'>
+      Supported object detection evaluation protocols</a><br>
+*   <a href='tpu_compatibility.md'>
+      TPU compatible detection pipelines</a><br>
+*   <a href='tf2_training_and_evaluation.md'>
+      Training and evaluation guide (CPU, GPU, or TPU)</a><br>
