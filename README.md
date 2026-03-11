@@ -97,38 +97,38 @@ python object_detection/builders/model_builder_tf2_test.py
 <!-- mdlint off(URL_BAD_G3DOC_PATH) -->
 
 *   Training -
-    [Fine-tune a pre-trained detector in eager mode on custom data](../colab_tutorials/eager_few_shot_od_training_tf2_colab.ipynb)
+    [Fine-tune a pre-trained detector in eager mode on custom data](colab_tutorials/eager_few_shot_od_training_tf2_colab.ipynb)
 
 *   Inference -
-    [Run inference with models from the zoo](../colab_tutorials/inference_tf2_colab.ipynb)
+    [Run inference with models from the zoo](colab_tutorials/inference_tf2_colab.ipynb)
 
 *   Few Shot Learning for Mobile Inference -
-    [Fine-tune a pre-trained detector for use with TensorFlow Lite](../colab_tutorials/eager_few_shot_od_training_tflite.ipynb)
+    [Fine-tune a pre-trained detector for use with TensorFlow Lite](colab_tutorials/eager_few_shot_od_training_tflite.ipynb)
 
 <!-- mdlint on -->
 
 ## Training and Evaluation
 
 To train and evaluate your models either locally or on Google Cloud see
-[instructions](tf2_training_and_evaluation.md).
+[instructions](object_detection/g3doc/tf2_training_and_evaluation.md).
 
 ## Model Zoo
 
 We provide a large collection of models that are trained on COCO 2017 in the
-[Model Zoo](tf2_detection_zoo.md).
+[Model Zoo](object_detection/g3doc/tf2_detection_zoo.md).
 
 ## Guides
 
-*   <a href='configuring_jobs.md'>
+*   <a href='object_detection/g3doc/configuring_jobs.md'>
       Configuring an object detection pipeline</a><br>
-*   <a href='preparing_inputs.md'>Preparing inputs</a><br>
-*   <a href='defining_your_own_model.md'>
+*   <a href='object_detection/g3doc/preparing_inputs.md'>Preparing inputs</a><br>
+*   <a href='object_detection/g3doc/defining_your_own_model.md'>
       Defining your own model architecture</a><br>
-*   <a href='using_your_own_dataset.md'>
+*   <a href='object_detection/g3doc/using_your_own_dataset.md'>
       Bringing in your own dataset</a><br>
-*   <a href='evaluation_protocols.md'>
+*   <a href='object_detection/g3doc/evaluation_protocols.md'>
       Supported object detection evaluation protocols</a><br>
-*   <a href='tpu_compatibility.md'>
+*   <a href='object_detection/g3doc/tpu_compatibility.md'>
       TPU compatible detection pipelines</a><br>
-*   <a href='tf2_training_and_evaluation.md'>
+*   <a href='object_detection/g3doc/tf2_training_and_evaluation.md'>
       Training and evaluation guide (CPU, GPU, or TPU)</a><br>
