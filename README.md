@@ -56,7 +56,8 @@ use the command ```where protoc``` to see where the protoc installation is used 
 Double check versions are correct
 
 ```bash
-#check installed version on conda env (if this outputs a version other than 3.20.3, you did something wrong and must redo the previous step or find further help)
+#check installed version on conda env
+#if this outputs a version other than 3.20.3, you did something wrong and must redo the previous step or find further help
 protoc --version
 #check installed version through pip (still, don't worry if this shows blank)
 pip show protobuf
