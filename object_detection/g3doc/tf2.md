@@ -1,4 +1,4 @@
-# Object Detection API with TensorFlow 2
+# Object Detection API with TensorFlow 2 (for lemonlight)
 
 ## Requirements
 
@@ -8,42 +8,88 @@
 
 ## Installation
 
-You can install the TensorFlow Object Detection API either with Python Package
-Installer (pip) or Docker. For local runs we recommend using Docker and for
-Google Cloud runs we recommend using pip.
+You can install the TensorFlow Object Detection API with Python Package
+Installer (pip) as well as protobuf
 
 Clone the TensorFlow Models repository and proceed to one of the installation
 options.
 
+Alternatively, you can install the zip of the repo and unzip it to use as the main project directory.
+
 ```bash
+#change this to working repo
 git clone https://github.com/tensorflow/models.git
-```
-
-### Docker Installation
-
-```bash
-# From the root of the git repository
-docker build -f research/object_detection/dockerfiles/tf2/Dockerfile -t od .
-docker run -it od
 ```
 
 ### Python Package Installation
 
-```bash
-cd models/research
-# Compile protos.
-protoc object_detection/protos/*.proto --python_out=.
-# Install TensorFlow Object Detection API.
-cp object_detection/packages/tf2/setup.py .
-python -m pip install --use-feature=2020-resolver .
-```
+#### Create Conda Environment
+
+You may have to change the directories to where you have the github repo installed if it is not in a standard location or if you installed it through the zip file.
 
 ```bash
-# Test the installation.
+#create environment
+conda create -n tf2 python=3.9
+#enter environment
+conda activate tf2
+#enter the installed github repo's folder (you may have to change)
+cd models/research
+```
+
+#### Protobuf usage
+
+Before you start using protobuf, you must check the version you have installed both in pip and in your conda environment. 
+
+```bash
+#check installed version on conda env (if this outputs a version other than 3.20.3, you must manually change the protoc version that anaconda uses)
+protoc --version
+#check installed version through pip (don't worry if this shows blank)
+pip show protobuf
+```
+
+#### Changing Protobuf Version In Conda
+
+install the correct version of protoc for conda from https://github.com/protocolbuffers/protobuf/releases/v3.20.3
+
+use the command ```where protoc``` to see where the protoc installation is used and replace it with the manually installed version of 3.20.3 (in the zip) from the bin folder to wherever ```where protoc``` is telling you its installed and overwrite the current installed exe.
+
+Double check versions are correct
+
+```bash
+#check installed version on conda env (if this outputs a version other than 3.20.3, you did something wrong and must redo the previous step or find further help)
+protoc --version
+#check installed version through pip (still, don't worry if this shows blank)
+pip show protobuf
+```
+
+#### Compile Protos and Install Tensorflow Library
+```bash
+#compile protos
+protoc object_detection/protos*.proto --python_out=.
+
+#install the actual tensorflow library
+python -m pip install .
+```
+
+### Test the installation
+
+```bash
 python object_detection/builders/model_builder_tf2_test.py
 ```
 
-## Quick Start
+If the test fails with an error like ```cannot import name 'builder' from 'google.protobuf.internal'``` despite having the correct version of protoc/protobuf, you have to change the internal version (the pip installed version) to ```3.20.3``` from ```3.19.6``` by running these commands otherwise, leave the internal version on ```3.19.6```
+
+```bash
+pip uninstall protobuf
+pip install protobuf==3.20.3
+#check versions (both should say 3.20.3)
+protoc --version
+pip show protobuf
+#run the installation test again
+python object_detection/builders/model_builder_tf2_test.py
+```
+
+## Quick Start (Legacy)
 
 ### Colabs
 
