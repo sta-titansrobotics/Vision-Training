@@ -90,6 +90,49 @@ pip show protobuf
 python object_detection/builders/model_builder_tf2_test.py
 ```
 
+## Training A Model
+
+### Organize and Label Files
+
+Bring images into the ```images``` folder and sort them into either the ```train``` or ```validate``` subfolders.
+If these folders do not exist yet, create them inside the ```images``` folder
+```bash
+cd object_detection/images
+#copy your dataset/create the two needed subfolders in any way you want 
+```
+
+####If your images are already labelled, you can skip this step
+
+To label your images, you must install the labelimg pip library and use it to label your images as you desire
+
+```bash
+pip install labelimg
+```
+
+For documentation on how to install and use the labelimg library refer to here https://pypi.org/project/labelImg/
+
+For the labelled images to be converted to something readable to tensorflow, you must convert the labels into two csv files
+```bash
+cd ..
+python "csv converter.py"
+```
+
+To make the labels for both train and validate folders actually readable by tensorflow, you must convert them into tfrecord files
+
+To begin, you must open the file ```generate_tfrecord.py``` and edit it so that you make the label names match the ones you made in labelimg
+
+To generate these tfrecords, run the following commands
+```bash
+#you may have to change some of the directories to wherever the csv files were generated in the previous step
+python generate_tfrecord.py --csv_input=images/labels/validate_labels.csv --image_dir=images/validate --output_path=validate.record
+python generate_tfrecord.py --csv_input=images/labels/train_labels.csv --image_dir=images/train --output_path=train.record
+```
+
+Change the labelmap file in the ```labels``` subfolder in ```images``` to have all the labels match those you have used in previous steps.
+
+#DOCUMENT HOW TO SELECT THE MODELS AND HOW TO CREATE THEIR OWN FOLDER BEFORE CONTINUING THE DOCUMENTATION ON THE TXT FILE
+
+
 ## Quick Start (Legacy)
 
 ### Colabs
