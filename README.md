@@ -101,7 +101,7 @@ cd object_detection/images
 #copy your dataset/create the two needed subfolders in any way you want 
 ```
 
-####If your images are already labelled, you can skip this step
+#### If your images are already labelled, you can skip this step
 
 To label your images, you must install the labelimg pip library and use it to label your images as you desire
 
@@ -128,9 +128,23 @@ python generate_tfrecord.py --csv_input=images/labels/validate_labels.csv --imag
 python generate_tfrecord.py --csv_input=images/labels/train_labels.csv --image_dir=images/train --output_path=train.record
 ```
 
-Change the labelmap file in the ```labels``` subfolder in ```images``` to have all the labels match those you have used in previous steps.
+Change the labelmap file in ```images/labels``` to have all the labels match those you have used in previous steps.
 
-#DOCUMENT HOW TO SELECT THE MODELS AND HOW TO CREATE THEIR OWN FOLDER BEFORE CONTINUING THE DOCUMENTATION ON THE TXT FILE
+#### Selecting and preparing your base model
+
+Since we are using the tensorflow workflow to create an object detection model, we must first select a model from the [model zoo](object_detection/g3doc/tf2_detection_zoo.md)
+
+Here you must select a specific base model to use as the foundation of the model and its training. For this use case, you must select a model with the outputs ```Boxes``` (only), and you may select your own out of these
+
+For this tutorial, we will be using the [SSD MobileNet V2 FPNlite](#) which is already downloaded and configured in this library
+
+#### Changing the model
+
+If you wish to use a different model than the one used in this tutorial, you must download the ```'your selected model'.tar.gz``` from the model zoo.
+
+Extract the compressed ```tar.gz``` file, and move its subfolder with the same name 
+
+# DOCUMENT HOW TO SELECT THE MODELS AND HOW TO CREATE THEIR OWN FOLDER BEFORE CONTINUING THE DOCUMENTATION ON THE TXT FILE
 
 
 ## Quick Start (Legacy)
