@@ -23,6 +23,10 @@ git clone https://github.com/tensorflow/models.git
 
 ### Python Package Installation
 
+#### Install Anaconda Prompt
+
+If you do not already have it, install anaconda prompt from [here](https://www.anaconda.com/download/success) and open a new prompt window once installed
+
 #### Create Conda Environment
 
 You may have to change the directories to where you have the github repo installed if it is not in a standard location or if you installed it through the zip file.
