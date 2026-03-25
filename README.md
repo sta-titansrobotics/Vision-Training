@@ -142,9 +142,25 @@ For this tutorial, we will be using the [SSD MobileNet V2 FPNlite](#) which is a
 
 If you wish to use a different model than the one used in this tutorial, you must download the ```'your selected model'.tar.gz``` from the model zoo.
 
-Extract the compressed ```tar.gz``` file, and move its subfolder with the same name 
+Extract the compressed ```tar.gz``` file, and move its subfolder with the same name into the main working directory ```object_detection```
 
-# DOCUMENT HOW TO SELECT THE MODELS AND HOW TO CREATE THEIR OWN FOLDER BEFORE CONTINUING THE DOCUMENTATION ON THE TXT FILE
+_if you wish to have an example of what the directory should look like when it is done, check the mobilnet640 or mobilnet320 directories_
+
+### Actually beginning the training
+
+to begin the actual training of the model using the mobilnet base model (as an example), you must run the command 
+
+```bash
+python model_main_tf2.py --pipeline_config_path=mobilnet640/pipeline.config --model_dir=training --alsologtostderr
+```
+
+while this is running, to view the training status status and model performance, open a seperate instance of anaconda prompt, activate the working environment, and run the command ```tensorboard --logdir=training``` in a seperate window/instance of anaconda prompt
+
+together this should look like
+```bash
+conda activate tf2
+tensorboard --logdir=training
+```
 
 
 ## Quick Start (Legacy)
