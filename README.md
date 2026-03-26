@@ -161,9 +161,13 @@ Under ```train_config``` you should find the parameter ```batch_size``` change t
 
 Near the end of the config file, you should see the following parameters ```fine_tune_checkpoint```   ```label_map_path```   ```input_path``` and they may be repeated in different classes of the config file.
 For ```fine_tune_checkpoint```
+
 For ```label_map_path``` in training
+
 For ```input_path``` in training
+
 For ```g``` in eval (validate)
+
 For ```g``` in eval (validate)
 
 At the end of the file you should also find the parameter ```fine_tune_checkpoint_type```. Make sure this is set to ```"detection"``` and not ```"classification"``` or something else
