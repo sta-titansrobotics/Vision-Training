@@ -123,7 +123,7 @@ python "csv converter.py"
 
 To make the labels for both train and validate folders actually readable by tensorflow, you must convert them into tfrecord files
 
-To begin, you must open the file ```generate_tfrecord.py``` and edit it so that you make the label names match the ones you made in labelimg
+To begin, you must open the file ```generate_tfrecord.py``` and edit it so that you make the label names and numbers match the ones you made in labelimg
 
 To generate these tfrecords, run the following commands
 ```bash
@@ -132,7 +132,8 @@ python generate_tfrecord.py --csv_input=images/labels/validate_labels.csv --imag
 python generate_tfrecord.py --csv_input=images/labels/train_labels.csv --image_dir=images/train --output_path=train.record
 ```
 
-Change the labelmap file in ```images/labels``` to have all the labels match those you have used in previous steps.
+Change the labelmap file in ```images/labels``` to have all the labels match those you have used in previous steps. You can see how to setup the syntax for different classes in the labelmap already configured.
+
 
 #### Selecting and preparing your base model
 
@@ -140,7 +141,7 @@ Since we are using the tensorflow workflow to create an object detection model, 
 
 Here you must select a specific base model to use as the foundation of the model and its training. For this use case, you must select a model with the outputs ```Boxes``` (only), and you may select your own out of these
 
-For this tutorial, we will be using the [SSD MobileNet V2 FPNlite](#) which is already downloaded and configured in this library
+For this tutorial, we will be using the [SSD MobileNet V2 FPNlite](http://download.tensorflow.org/models/object_detection/tf2/20200711/ssd_mobilenet_v2_fpnlite_640x640_coco17_tpu-8.tar.gz) which is already downloaded in this library
 
 #### Changing the model
 
@@ -148,11 +149,28 @@ If you wish to use a different model than the one used in this tutorial, you mus
 
 Extract the compressed ```tar.gz``` file, and move its subfolder with the same name into the main working directory ```object_detection```
 
-_if you wish to have an example of what the directory should look like when it is done, check the mobilnet640 or mobilnet320 directories_
+_If you wish to have an example of what the directory should look like when it is done, check the mobilnet640 or mobilnet320 directories_
+
+#### Configure the model config
+
+Enter the directory that you have set up for the model you selected (for those simply following the tutorial, that would be at ```mobilnet640```)
+
+Here, you should find the file ```pipeline.config``` where you will have to edit a few parameters
+
+Under ```train_config``` you should find the parameter ```batch_size``` change this to a number that would be capable for your computer to handle, as it is the number of training batches it will do at once. For reference, if you are not using cuda, i recommend a batch size of 4-8, and if you are using a nvidia gpu that is cuda capable (most rtx cards) you can change this number to something much larger (you'll have to play around with it to find the best number for your hardware)
+
+Near the end of the config file, you should see the following parameters ```fine_tune_checkpoint```   ```label_map_path```   ```input_path``` and they may be repeated in different classes of the config file.
+For ```fine_tune_checkpoint```
+For ```label_map_path``` in training
+For ```input_path``` in training
+For ```g``` in eval (validate)
+For ```g``` in eval (validate)
+
+At the end of the file you should also find the parameter ```fine_tune_checkpoint_type```. Make sure this is set to ```"detection"``` and not ```"classification"``` or something else
 
 ### Actually beginning the training
 
-to begin the actual training of the model using the mobilnet base model (as an example), you must run the command 
+To begin the actual training of the model using the mobilnet base model (as an example), you must run the command 
 
 ```bash
 python model_main_tf2.py --pipeline_config_path=mobilnet640/pipeline.config --model_dir=training --alsologtostderr
