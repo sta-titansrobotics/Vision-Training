@@ -30,9 +30,9 @@ def xml_to_csv(path):
 
 def main(): # this is the part we change to work with our setup
     for directory in ['train','validate']:
-        image_path = os.path.join(os.getcwd(), 'images/face/{}'.format(directory))
+        image_path = os.path.join(os.getcwd(), 'images/{}'.format(directory))
         xml_df = xml_to_csv(image_path)
-        xml_df.to_csv('images/face/labels/{}_labels.csv'.format(directory), index=None)
+        xml_df.to_csv('images/labels/{}_labels.csv'.format(directory), index=None)
         print('Successfully converted xml to csv.')
 
 
